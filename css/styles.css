@@ -1,0 +1,35 @@
+html {
+  font-size: 62.5%;
+  font-family: arial;
+}
+
+body {
+  margin: 0;
+  background-color: #272822;
+}
+
+/* example */
+
+section {
+  overflow: auto;
+}
+
+section h2 {
+  font-family: Monaco;
+  color: #efefef;
+  padding: 0;
+  margin: 30px 0 0 30px;
+}
+
+section .controls {
+  float: left;
+  width: 44%;
+  box-sizing: border-box;
+  padding: 15px 30px 0;
+}
+
+section pre {
+  float: right;
+  width: 55%;
+  box-sizing: border-box;
+}

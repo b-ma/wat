@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <title>WAT - Web Audio Tips</title>
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="stylesheet" href="/css/prism-okaidia.css" />
+</head>
+<body>
+  <section>
+
+  <h2>Amplitude modulation</h2>
+  <div class="controls" id="tremolo-controllers"></div>
+<pre class="language-javascript"><code class="language-javascript">
+var ctx = new AudioContext();
+
+// source
+var sine = ctx.createOscillator();
+sine.type = 'sine';
+sine.frequency.value = 400;
+
+// amplitude modulation
+var lfo = ctx.createOscillator();
+lfo.frequency.value = 4; // 4 Hz
+
+var depth = ctx.createGain();
+depth.gain.value = 0.2;
+
+var amplitude = ctx.createGain();
+amplitude.gain.value = 0.8;
+
+// create graph
+lfo.connect(depth);
+depth.connect(amplitude.gain); // modulate AudioParam
+sine.connect(amplitude);
+amplitude.connect(ctx.destination);
+
+// start oscillators
+var now = ctx.currentTime;
+sine.start(now);
+lfo.start(now);
+</code></pre>
+
+    </section>
+  <script src="/bundle.js"></script>
+</body>
+</html>
